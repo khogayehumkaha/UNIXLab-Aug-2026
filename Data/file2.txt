@@ -1,0 +1,2 @@
+hello students 
+lets start the linux executions, starting with hello world
