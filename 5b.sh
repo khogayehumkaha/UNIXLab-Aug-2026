@@ -1,11 +1,13 @@
 #!/bin/sh
+# sh 5b.sh
 
-set -- $(date)
-d=$3
+set -- `date`
+day="$3"
 
-if [ $d -le 9 ]
+if [ $day -le 9 ]
 then
-    cal | sed "s/ $d / * /"
+    cal | sed "s/ $day / * /"
 else
-    cal | sed "s/ $d / ** /"
+    cal | sed "s/ $day / ** /"
 fi
+

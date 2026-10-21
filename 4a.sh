@@ -1,12 +1,20 @@
-#!/bin/sh
+# touch aa bb
+# ls
+# sh 4a.sh aa bb cc
+# ls
 
 for file in "$@"
 do
-    if [ -f "$file" ]
+    if [ -f $file ]
     then
-        new=$(echo "$file" | tr "a-z" "A-Z")
-        mv "$file" "$new"
+          	ufile=`echo "$file" | tr "a-z" "A-Z"`
+        	if [ -f $ufile ]
+        	then
+              echo "$ufile exists"
+        	else
+              mv $file $ufile
+        	fi
     else
-        echo "$file does not exist"
+          	echo "$file does not exist"
     fi
 done

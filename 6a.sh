@@ -1,16 +1,28 @@
 #!/bin/sh
-# sh filename 'pattern'
+# cat > ISE3.txt
+# sh 6a.sh ISE3.txt
+# ls ~/mydir/
 
-if [ $# -eq 0 ]
+
+pattern="$1"
+dest="$HOME/mydir"
+
+if [ ! -d "$dest" ]
 then
-    echo "No arguments"
-    exit
+    mkdir -p "$dest"
 fi
 
-mkdir -p ~/mydir
-
-for i in $(find ~ -name "$1")
+find "$HOME" -type f -name "$pattern" -print | while read file
 do
-    cat "$i"
-    cp "$i" ~/mydir
+    echo "File found: $file"
+    echo "-------------------------"
+
+    cat "$file"
+
+    echo "-------------------------"
+    cp "$file" "$dest"
+
+    echo "$file copied to $dest"
 done
+
+

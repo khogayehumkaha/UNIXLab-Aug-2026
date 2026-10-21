@@ -1,13 +1,28 @@
 #!/bin/sh
 # checks present directory
-for file in *
-do
-    if [ -f "$file" ]
-    then
-        len=$(expr length "$file")
-        if [ $len -ge 10 ]
+# touch 10characterfile.txt
+# sh 6b.sh .
+
+
+
+if [ -d "$1" ]
+then
+    for file in "$1"/*
+    do
+        if [ -f "$file" ]
         then
-            echo "$file"
+            bname=`basename "$file"`
+            name="${bname%.*}"
+            len=`expr length "$name"`
+
+            if [ "$len" -ge 10 ]
+            then
+                echo "$bname"
+            fi
         fi
-    fi
-done
+    done
+else
+    echo "Directory does not exist"
+fi
+
+

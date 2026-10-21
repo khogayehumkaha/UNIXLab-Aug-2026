@@ -1,21 +1,20 @@
+# awk -f 11a.awk Books1.txt
+# awk -f 11a.awk Books1.txt | sort
+
 BEGIN {
-    print "Discipline\tBooks Sold"
+    print"TOTAL NUMBER OF BOOOKS SOLD IN EACH CATAGORY"
 }
 
 {
-    item = $1
-    for (i = 2; i < NF; i++)
-        item = item " " $i
-
-    books[item] += $NF
+    books [$1]+=$2
 }
 
-END {
-    for (item in books)
-    {
-        print item "\t" books[item]
-          total += books[item]
+END { 
+    for(item in books)
+    { 
+        printf("\t%-17s %1s %-5d\n", item, "=",books[item])
+        total+=books[item]
     }
-
-    print "Total Books Sold =", total
+    printf("%-17s %1s %-5s\n", "Total Books Sold","=", total)
 }
+

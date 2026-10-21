@@ -1,15 +1,26 @@
 #!/bin/sh
 #pass folder as argument 
-for file in "$1"/*
-do
-    if [ -f "$file" ]
-    then
-        name=$(basename "$file")
-        len=$(expr length "$name")
+# sh 6bb.sh /home/student/Documents
 
-        if [ $len -ge 10 ]
+if [ -d "$1" ]
+then
+    for file in "$1"/*
+    do
+        if [ -f "$file" ]
         then
-            echo "$name"
+            # Extract filename, then strip the extension
+            bname=`basename "$file"`
+            name="${bname%.*}"
+            
+            # Get the length of the name without extension
+            len=`expr length "$name"`
+
+            if [ "$len" -ge 10 ]
+            then
+                echo "$bname"
+            fi
         fi
-    fi
-done
+    done
+else
+    echo "Directory does not exist"
+fi

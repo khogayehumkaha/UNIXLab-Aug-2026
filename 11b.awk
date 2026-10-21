@@ -1,3 +1,5 @@
+# awk -f 11b.awk data.txt
+
 BEGIN {
     FS=":"
 }
