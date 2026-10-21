@@ -49,14 +49,8 @@
 
 ## ⚙️ Setup & How to Run
 
-### 1️⃣ Clone the repository
 
-```bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
-```
-
-### 2️⃣ Run any program
+### 1️⃣  Run any program
 
 Shell programs are run with `sh` (or `bash`) and AWK programs with `awk -f`:
 
@@ -65,7 +59,7 @@ sh   1a.sh  /home/student/Documents      # shell script + arguments
 awk -f 11b.awk data.txt                  # awk script + input file
 ```
 
-### 3️⃣ (Optional) make a script directly executable
+### 2️⃣ (Optional) make a script directly executable
 
 ```bash
 chmod +x 1a.sh
