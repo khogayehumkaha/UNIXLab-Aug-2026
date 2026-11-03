@@ -49,8 +49,14 @@
 
 ## ⚙️ Setup & How to Run
 
+### 1️⃣ Clone the repository
 
-### 1️⃣  Run any program
+```bash
+git clone https://github.com/<your-username>/<your-repo-name>.git
+cd <your-repo-name>
+```
+
+### 2️⃣ Run any program
 
 Shell programs are run with `sh` (or `bash`) and AWK programs with `awk -f`:
 
@@ -59,7 +65,7 @@ sh   1a.sh  /home/student/Documents      # shell script + arguments
 awk -f 11b.awk data.txt                  # awk script + input file
 ```
 
-### 2️⃣ (Optional) make a script directly executable
+### 3️⃣ (Optional) make a script directly executable
 
 ```bash
 chmod +x 1a.sh
@@ -918,7 +924,7 @@ duplicatedata.txt
 - `expr length "$name"` gives the number of characters; `-ge 10` keeps names with **10 or more**.
 
 <details>
-<summary><b>🔁 Alternate version: <code>6bb.sh</code> — same logic, with explanatory comments</summary>
+<summary><b>🔁 Alternate version: <code>6bb.sh</code> — same logic, without extracting file extension</summary>
 
 Identical to `6b.sh`, but the directory is passed as an argument and every step is commented.
 
@@ -933,12 +939,9 @@ then
     do
         if [ -f "$file" ]
         then
-            # Extract filename, then strip the extension
+           
             bname=`basename "$file"`
-            name="${bname%.*}"
-
-            # Get the length of the name without extension
-            len=`expr length "$name"`
+            len=`expr length "$bname"`
 
             if [ "$len" -ge 10 ]
             then
